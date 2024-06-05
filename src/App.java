@@ -1,6 +1,7 @@
 import Materia.Models.Pantallas;
 import Materia.Pilas.Pila;
-import Materia.Pilas.PilaGenerica;;
+import Materia.Pilas.PilaGenerica;
+import Materia.Colas.*;
 public class App {
     public static void main(String[] args) throws Exception {
         System.out.println("Hello, World!");
@@ -25,6 +26,40 @@ public class App {
         System.out.println("Estoy en la pantalla \t"+pilaPantallas.peek().getNombre());
         pilaPantallas.push(new Pantallas("User page", "/Home/menu/user"));
         System.out.println("Estoy en la pantalla \t"+pilaPantallas.peek().getNombre());
+        //implementacion de la cola generica tipo pantalla
 
+        Cola queue=new Cola();
+        //añadir elementos a la cola
+        queue.addNode(10);
+        queue.addNode(20);
+        queue.addNode(30);
+        //mostrar el elemento en el frente
+        System.out.println("Elemento en el frente "+queue.peek());
+        //retirar elementos de la cola
+        System.out.println("Elemento retirado  "+queue.remove());
+        System.out.println("Elemento en el frente "+queue.peek());
+
+        System.out.println("Elemento retirado  "+queue.remove());
+        System.out.println("Elemento en el frente "+queue.peek());
+        //verificar si la cola esta vacia
+        System.out.println("¿Cola vacia?  "+(queue.isEmpty()?"si":"no")); 
+        
+
+        ///IMPLEMENTACION DE COLA GENERICA TIPO PANTALLA
+        ColaGenerica<Pantallas> queueGeneric=new ColaGenerica<>();
+        queueGeneric.addNode(new Pantallas("Home page","/Home page" ));
+        queueGeneric.addNode(new Pantallas("Menu page","/Home page/Menu page" ));
+        queueGeneric.addNode(new Pantallas("Settings page","/Home page/Menu page/Settings page" ));
+        System.out.println("La cola tiene "+queueGeneric.size()+"  Elementos");
+        System.out.println("Estoy en la pantalla \t"+queueGeneric.peek().getNombre());
+        System.out.println("Pantalla destruida \t"+queueGeneric.remove().getNombre());
+        queueGeneric.addNode(new Pantallas("User page","/User page/Menu page/Settings page" ));
+        System.out.println("Estoy en la pantalla \t"+queueGeneric.peek().getNombre());
+        System.out.println("Pantalla destruida \t"+queueGeneric.remove().getNombre());
+        System.out.println("Pantalla destruida \t"+queueGeneric.remove().getNombre());
+        System.out.println("Estoy en la pantalla \t"+queueGeneric.peek().getNombre());
+        System.out.println("La cola tiene "+queueGeneric.size()+"  Elementos");
+        
+        
     }
 }
