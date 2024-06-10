@@ -1,7 +1,9 @@
 import Materia.Models.Pantallas;
 import Materia.Pilas.Pila;
 import Materia.Pilas.PilaGenerica;
+import Ejercicio_01_sign.SignValidator;
 import Materia.Colas.*;
+import Materia.ListasEnlazadas.ListaEnlazada;
 public class App {
     public static void main(String[] args) throws Exception {
         System.out.println("Hello, World!");
@@ -60,6 +62,21 @@ public class App {
         System.out.println("Estoy en la pantalla \t"+queueGeneric.peek().getNombre());
         System.out.println("La cola tiene "+queueGeneric.size()+"  Elementos");
         
+        ///EJERCICIO 1 SING VALIDATOR
+        SignValidator sign=new SignValidator();
+        System.out.println(sign.isValid("({[()dsfsgsg)])})"));
+
+        //Lista enlazada
+        ListaEnlazada lista=new ListaEnlazada();
+        lista.addNode(1);
+        lista.addNode(4);
+        lista.addNode(3);
+        lista.addNode(6);
+        lista.print();
+        lista.deleteNode(1);
+        lista.print();
+        lista.deleteNode(3);
+        lista.print();
         
     }
 }
